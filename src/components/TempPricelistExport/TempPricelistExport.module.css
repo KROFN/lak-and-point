@@ -7,7 +7,7 @@
 }
 
 .shell {
-  width: min(1440px, 100%);
+  width: min(1320px, 100%);
   margin: 0 auto;
   display: grid;
   gap: 20px;
@@ -93,7 +93,7 @@
 .stage {
   display: grid;
   place-items: center;
-  padding: 28px;
+  padding: 24px;
   border: 1px solid rgba(200, 164, 212, 0.14);
   border-radius: 32px;
   background: rgba(10, 8, 14, 0.7);
@@ -102,8 +102,33 @@
 }
 
 .artboard {
-  width: min(100%, 1280px);
-  aspect-ratio: 4 / 3;
+  width: min(100%, 900px);
+  aspect-ratio: 3 / 4;
   border-radius: 28px;
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+}
+
+@media (max-width: 960px) {
+  .page {
+    padding: 20px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .actions > * {
+    flex: 1 1 0;
+  }
+
+  .stage {
+    padding: 14px;
+    border-radius: 24px;
+  }
 }

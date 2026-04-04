@@ -30,11 +30,11 @@ export default function Contact() {
           <div className={styles.actions} data-animate>
             <a
               className="button button--primary"
-              href="https://t.me/dEDussikm"
+            href="https://t.me/the6_7lakandtochka0"
               target="_blank"
               rel="noreferrer"
             >
-              Telegram ↗
+            https://t.me/the6_7lakandtochka0 ↗
             </a>
             <a
               className="button button--ghost"

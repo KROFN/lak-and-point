@@ -79,11 +79,11 @@ export default function Hero() {
             </a>
             <a
               className="button button--ghost"
-              href="https://t.me/dEDussikm"
+              href="https://t.me/the6_7lakandtochka0"
               target="_blank"
               rel="noreferrer"
             >
-              Написать в Telegram ↗
+              https://t.me/the6_7lakandtochka0 ↗
             </a>
           </div>
 

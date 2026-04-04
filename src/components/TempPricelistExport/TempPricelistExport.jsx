@@ -2,23 +2,149 @@ import { useRef, useState } from 'react';
 import { extensionPricingCopy, extensionPricingRows } from '../Services/extensionPricingData';
 import styles from './TempPricelistExport.module.css';
 
+const telegramUrl = 'https://t.me/the6_7lakandtochka0';
+
+const services = [
+  {
+    title: 'Маникюр без покрытия',
+    titleLines: ['Маникюр без', 'покрытия'],
+    price: '200 ₽',
+    accent: 'minimal',
+  },
+  {
+    title: 'Маникюр с укреплением',
+    titleLines: ['Маникюр с', 'укреплением'],
+    price: '850 ₽',
+    accent: 'accent',
+  },
+  {
+    title: 'Снятие + маникюр + укрепляющий лак',
+    titleLines: ['Снятие + маникюр', '+ укрепляющий лак'],
+    price: '250 ₽',
+    accent: 'soft',
+  },
+  {
+    title: 'Стилет',
+    titleLines: ['Стилет'],
+    price: '1500 ₽',
+    accent: 'minimal',
+  },
+];
+
 const artboard = {
-  width: 1600,
-  height: 1200,
+  width: 1200,
+  height: 1600,
 };
 
+const posterMarks = [
+  { char: '✦', x: 28, y: 46, fill: 'rgba(242,238,245,0.10)', size: 18 },
+  { char: '+', x: 102, y: 74, fill: 'rgba(232,165,152,0.10)', size: 17 },
+  { char: '♡', x: 484, y: 54, fill: 'rgba(200,164,212,0.10)', size: 16 },
+  { char: '✦', x: 712, y: 98, fill: 'rgba(242,238,245,0.08)', size: 16 },
+  { char: '+', x: 910, y: 56, fill: 'rgba(242,238,245,0.10)', size: 22 },
+  { char: '✦', x: 864, y: 126, fill: 'rgba(232,165,152,0.09)', size: 16 },
+];
+
+function ServicePosterCard({ service, index, x, y, width, height }) {
+  const accentFill =
+    service.accent === 'accent'
+      ? 'url(#serviceAccentGlow)'
+      : service.accent === 'soft'
+        ? 'url(#serviceWarmGlow)'
+        : 'url(#serviceMinimalGlow)';
+  const titleLineHeight = 28;
+  const titleAreaTop = 62;
+  const titleAreaBottom = height - 72;
+  const titleAreaCenter = (titleAreaTop + titleAreaBottom) / 2;
+  const titleBlockHeight = (service.titleLines.length - 1) * titleLineHeight;
+  const titleStartY = titleAreaCenter - titleBlockHeight / 2;
+
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <rect width={width} height={height} rx="28" fill="#241f29" stroke="rgba(200,164,212,0.22)" />
+      <rect width={width} height={height} rx="28" fill={accentFill} opacity="0.88" />
+      <rect width={width} height={height} rx="28" fill="rgba(255,255,255,0.025)" />
+
+      <text
+        x="28"
+        y="26"
+        fill="rgba(200,164,212,0.72)"
+        fontFamily="Space Mono, monospace"
+        fontSize="11"
+        letterSpacing="2.2"
+      >
+        УСЛУГА
+      </text>
+
+      {service.titleLines.map((line, lineIndex) => (
+        <text
+          key={`${service.title}-${line}`}
+          x="28"
+          y={titleStartY + lineIndex * titleLineHeight}
+          fill="#f2eef5"
+          fontFamily="DM Sans, sans-serif"
+          fontSize="23"
+          fontWeight="700"
+        >
+          {line}
+        </text>
+      ))}
+
+      <line x1="28" x2={width - 28} y1={height - 48} y2={height - 48} stroke="rgba(255,255,255,0.08)" />
+      <text
+        x="28"
+        y={height - 16}
+        fill="#c8a4d4"
+        fontFamily="Space Mono, monospace"
+        fontSize="22"
+        letterSpacing="1"
+      >
+        {service.price}
+      </text>
+      <text
+        x={width - 22}
+        y={height - 16}
+        fill="rgba(242,238,245,0.22)"
+        fontFamily="Space Mono, monospace"
+        fontSize="13"
+        textAnchor="end"
+        letterSpacing="2.6"
+      >
+        0{index + 1}
+      </text>
+    </g>
+  );
+}
+
 function TempPricelistArtwork({ svgRef }) {
-  const cardX = 112;
-  const cardY = 286;
-  const cardWidth = 1376;
-  const cardHeight = 800;
-  const innerLeft = cardX + 56;
-  const headerY = cardY + 82;
-  const labelColCenter = innerLeft + 110;
-  const extensionColCenter = innerLeft + 438;
-  const correctionColCenter = innerLeft + 816;
-  const rowStartY = cardY + 278;
-  const rowGap = 102;
+  const frameX = 72;
+  const frameWidth = artboard.width - frameX * 2;
+  const serviceGap = 20;
+  const serviceCardWidth = (frameWidth - serviceGap) / 2;
+  const serviceCardHeight = 160;
+  const serviceStartY = 252;
+  const serviceSecondRowY = serviceStartY + serviceCardHeight + 18;
+
+  const largeCardY = 624;
+  const largeCardHeight = 786;
+  const largeCardPadding = 42;
+
+  const tableShellX = frameX + largeCardPadding;
+  const tableShellY = largeCardY + 244;
+  const tableShellWidth = frameWidth - largeCardPadding * 2;
+  const tableShellHeight = 520;
+
+  const tableInset = 16;
+  const cellGap = 12;
+  const rowGap = 12;
+  const headHeight = 52;
+  const rowHeight = 96;
+  const labelColWidth = 254;
+  const valueColWidth = (tableShellWidth - tableInset * 2 - labelColWidth - cellGap * 2) / 2;
+
+  const headX = tableShellX + tableInset;
+  const headY = tableShellY + tableInset;
+  const firstRowY = headY + headHeight + rowGap;
 
   return (
     <svg
@@ -27,133 +153,228 @@ function TempPricelistArtwork({ svgRef }) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox={`0 0 ${artboard.width} ${artboard.height}`}
       role="img"
-      aria-label="Прайс-лист по длине: наращивание и коррекция"
+      aria-label="Прайс-лист в формате 3 на 4"
     >
       <defs>
         <linearGradient id="pageBg" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#17111e" />
-          <stop offset="55%" stopColor="#0e0b12" />
-          <stop offset="100%" stopColor="#121019" />
+          <stop offset="55%" stopColor="#0f0b13" />
+          <stop offset="100%" stopColor="#14111a" />
         </linearGradient>
         <radialGradient id="pageGlowTop" cx="14%" cy="10%" r="36%">
           <stop offset="0%" stopColor="#e8a598" stopOpacity="0.18" />
           <stop offset="1" stopColor="#e8a598" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="pageGlowRight" cx="86%" cy="12%" r="42%">
+        <radialGradient id="pageGlowRight" cx="84%" cy="12%" r="42%">
           <stop offset="0%" stopColor="#c8a4d4" stopOpacity="0.18" />
           <stop offset="1" stopColor="#c8a4d4" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="posterCardFill" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#35594d" />
-          <stop offset="100%" stopColor="#243f36" />
+        <radialGradient id="pageGlowBottom" cx="50%" cy="100%" r="48%">
+          <stop offset="0%" stopColor="#35594d" stopOpacity="0.28" />
+          <stop offset="1" stopColor="#35594d" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="serviceAccentGlow" cx="100%" cy="0%" r="100%">
+          <stop offset="0%" stopColor="#c8a4d4" stopOpacity="0.22" />
+          <stop offset="1" stopColor="#c8a4d4" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="serviceWarmGlow" cx="0%" cy="0%" r="90%">
+          <stop offset="0%" stopColor="#e8a598" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#e8a598" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="serviceMinimalGlow" cx="50%" cy="100%" r="80%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.04" />
+          <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="greenCardFill" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#486f60" />
+          <stop offset="58%" stopColor="#36594d" />
+          <stop offset="100%" stopColor="#2b4d42" />
         </linearGradient>
-        <linearGradient id="badgeFill" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#e8a598" />
-          <stop offset="100%" stopColor="#c8a4d4" />
+        <linearGradient id="chipFill" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0.04)" />
+        </linearGradient>
+        <linearGradient id="titleAccentFill" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="rgba(232,165,152,0.18)" />
+          <stop offset="100%" stopColor="rgba(200,164,212,0.34)" />
+        </linearGradient>
+        <linearGradient id="tableShellFill" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="rgba(16,30,25,0.18)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0.015)" />
+        </linearGradient>
+        <linearGradient id="headLengthFill" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="rgba(39,64,57,0.7)" />
+          <stop offset="100%" stopColor="rgba(31,52,46,0.62)" />
+        </linearGradient>
+        <linearGradient id="headExtensionFill" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="rgba(48,78,69,0.74)" />
+          <stop offset="100%" stopColor="rgba(38,63,56,0.68)" />
+        </linearGradient>
+        <linearGradient id="headCorrectionFill" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="rgba(75,103,96,0.78)" />
+          <stop offset="100%" stopColor="rgba(59,86,81,0.68)" />
+        </linearGradient>
+        <linearGradient id="lengthCellFill" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="rgba(42,68,60,0.78)" />
+          <stop offset="100%" stopColor="rgba(34,57,50,0.72)" />
+        </linearGradient>
+        <linearGradient id="extensionCellFill" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="rgba(46,76,67,0.78)" />
+          <stop offset="100%" stopColor="rgba(37,63,56,0.72)" />
+        </linearGradient>
+        <linearGradient id="correctionCellFill" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="rgba(80,110,103,0.8)" />
+          <stop offset="100%" stopColor="rgba(61,90,84,0.72)" />
         </linearGradient>
       </defs>
 
       <rect width={artboard.width} height={artboard.height} fill="url(#pageBg)" />
       <rect width={artboard.width} height={artboard.height} fill="url(#pageGlowTop)" />
       <rect width={artboard.width} height={artboard.height} fill="url(#pageGlowRight)" />
+      <rect width={artboard.width} height={artboard.height} fill="url(#pageGlowBottom)" />
 
-      <text x="112" y="108" fill="#c8a4d4" fontFamily="Space Mono, monospace" fontSize="22" letterSpacing="4.4">
-        ЛАК И ТОЧКА
+      <text x="72" y="86" fill="#c8a4d4" fontFamily="Space Mono, monospace" fontSize="18" letterSpacing="4">
+        PRICE
       </text>
-      <text x="112" y="194" fill="#f2eef5" fontFamily="Playfair Display, serif" fontSize="108" fontWeight="700">
-        Прайс по длине
+      <text x="72" y="176" fill="#f2eef5" fontFamily="Playfair Display, serif" fontSize="88" fontWeight="700">
+        Прайс
       </text>
-      <text x="112" y="246" fill="rgba(242,238,245,0.72)" fontFamily="DM Sans, sans-serif" fontSize="30">
-        Наращивание и коррекция в одной системе
+      <text x="72" y="222" fill="rgba(242,238,245,0.72)" fontFamily="DM Sans, sans-serif" fontSize="27">
+        Дизайн — в подарок 💖
       </text>
 
-      <g transform="translate(1144 88)">
-        <rect width="344" height="58" rx="29" fill="rgba(255,255,255,0.05)" stroke="rgba(200,164,212,0.22)" />
-        <circle cx="38" cy="29" r="7" fill="url(#badgeFill)" />
-        <text x="60" y="37" fill="#f2eef5" fontFamily="Space Mono, monospace" fontSize="21" letterSpacing="1.4">
-          {extensionPricingCopy.badge}
-        </text>
+      <ServicePosterCard service={services[0]} index={0} x={72} y={serviceStartY} width={serviceCardWidth} height={serviceCardHeight} />
+      <ServicePosterCard service={services[1]} index={1} x={72 + serviceCardWidth + serviceGap} y={serviceStartY} width={serviceCardWidth} height={serviceCardHeight} />
+      <ServicePosterCard service={services[2]} index={2} x={72} y={serviceSecondRowY} width={serviceCardWidth} height={serviceCardHeight} />
+      <ServicePosterCard service={services[3]} index={3} x={72 + serviceCardWidth + serviceGap} y={serviceSecondRowY} width={serviceCardWidth} height={serviceCardHeight} />
+
+      <g transform={`translate(${frameX} ${largeCardY})`}>
+        <rect width={frameWidth} height={largeCardHeight} rx="44" fill="url(#greenCardFill)" stroke="rgba(255,255,255,0.1)" />
+        <rect width={frameWidth} height={largeCardHeight} rx="44" fill="rgba(255,255,255,0.02)" />
+
+        <g opacity="0.44">
+          {posterMarks.map((mark) => (
+            <text
+              key={`${mark.char}-${mark.x}-${mark.y}`}
+              x={mark.x}
+              y={mark.y}
+              fill={mark.fill}
+              fontFamily="Space Mono, monospace"
+              fontSize={mark.size}
+            >
+              {mark.char}
+            </text>
+          ))}
+        </g>
       </g>
 
-      <g transform={`translate(${cardX} ${cardY})`}>
-        <rect width={cardWidth} height={cardHeight} rx="48" fill="url(#posterCardFill)" stroke="rgba(255,255,255,0.12)" />
-        <rect
-          x="0"
-          y="0"
-          width={cardWidth}
-          height={cardHeight}
-          rx="48"
-          fill="rgba(255,255,255,0.02)"
-          stroke="rgba(255,255,255,0.04)"
-        />
-      </g>
-
-      <text x={innerLeft} y={headerY} fill="rgba(242,238,245,0.72)" fontFamily="Space Mono, monospace" fontSize="21" letterSpacing="3">
+      <text
+        x={frameX + largeCardPadding}
+        y={largeCardY + 64}
+        fill="rgba(242,238,245,0.72)"
+        fontFamily="Space Mono, monospace"
+        fontSize="16"
+        letterSpacing="2.8"
+      >
         {extensionPricingCopy.kicker.toUpperCase()}
       </text>
-      <text x={innerLeft} y={headerY + 86} fill="#f2eef5" fontFamily="DM Sans, sans-serif" fontSize="68" fontWeight="700">
-        {extensionPricingCopy.title}
+      <text
+        x={frameX + largeCardPadding}
+        y={largeCardY + 136}
+        fill="#f2eef5"
+        fontFamily="DM Sans, sans-serif"
+        fontSize="62"
+        fontWeight="700"
+      >
+        Наращивание
       </text>
-      <g transform={`translate(${innerLeft} ${cardY + 182})`}>
-        <rect width="220" height="54" rx="27" fill="rgba(17,28,24,0.28)" stroke="rgba(255,255,255,0.1)" />
-        <rect x="276" width="324" height="54" rx="27" fill="rgba(17,28,24,0.28)" stroke="rgba(255,255,255,0.1)" />
-        <rect x="654" width="324" height="54" rx="27" fill="rgba(200,164,212,0.14)" stroke="rgba(200,164,212,0.18)" />
 
-        <text x="110" y="35" fill="rgba(242,238,245,0.72)" fontFamily="Space Mono, monospace" fontSize="18" textAnchor="middle" letterSpacing="2.2">
+      <g transform={`translate(${frameX + largeCardPadding - 4} ${largeCardY + 148})`}>
+        <rect width="356" height="54" rx="27" fill="url(#titleAccentFill)" stroke="rgba(255,255,255,0.08)" />
+        <text x="24" y="38" fill="#f9f3ff" fontFamily="DM Sans, sans-serif" fontSize="52" fontWeight="700">
+          и коррекция
+        </text>
+      </g>
+
+      <g transform={`translate(${frameX + frameWidth - 302} ${largeCardY + 34})`}>
+        <rect width="230" height="52" rx="26" fill="url(#chipFill)" stroke="rgba(255,255,255,0.14)" />
+        <text x="115" y="34" fill="#f2eef5" fontFamily="Space Mono, monospace" fontSize="14" textAnchor="middle" letterSpacing="1.2">
+          {extensionPricingCopy.badge.toUpperCase()}
+        </text>
+      </g>
+
+      <line
+        x1={frameX + largeCardPadding}
+        x2={frameX + frameWidth - largeCardPadding}
+        y1={largeCardY + 220}
+        y2={largeCardY + 220}
+        stroke="rgba(255,255,255,0.08)"
+      />
+
+      <g transform={`translate(${tableShellX} ${tableShellY})`}>
+        <rect width={tableShellWidth} height={tableShellHeight} rx="30" fill="url(#tableShellFill)" stroke="rgba(255,255,255,0.08)" />
+        <rect x={tableShellWidth * 0.66} y="0" width={tableShellWidth * 0.34} height={tableShellHeight} rx="30" fill="rgba(216,192,224,0.03)" />
+      </g>
+
+      <g transform={`translate(${headX} ${headY})`}>
+        <rect width={labelColWidth} height={headHeight} rx="25" fill="url(#headLengthFill)" stroke="rgba(255,255,255,0.08)" />
+        <rect x={labelColWidth + cellGap} width={valueColWidth} height={headHeight} rx="25" fill="url(#headExtensionFill)" stroke="rgba(255,255,255,0.08)" />
+        <rect x={labelColWidth + valueColWidth + cellGap * 2} width={valueColWidth} height={headHeight} rx="25" fill="url(#headCorrectionFill)" stroke="rgba(217,191,226,0.11)" />
+
+        <text x="24" y="31" fill="rgba(242,238,245,0.66)" fontFamily="Space Mono, monospace" fontSize="15" letterSpacing="2">
           ДЛИНА
         </text>
-        <text x="438" y="35" fill="rgba(242,238,245,0.84)" fontFamily="Space Mono, monospace" fontSize="18" textAnchor="middle" letterSpacing="2.2">
+        <text x={labelColWidth + cellGap + 24} y="31" fill="rgba(242,238,245,0.72)" fontFamily="Space Mono, monospace" fontSize="15" letterSpacing="2">
           НАРАЩИВАНИЕ
         </text>
-        <text x="816" y="35" fill="#f2eef5" fontFamily="Space Mono, monospace" fontSize="18" textAnchor="middle" letterSpacing="2.2">
+        <text
+          x={labelColWidth + valueColWidth + cellGap * 2 + 24}
+          y="31"
+          fill="rgba(242,238,245,0.82)"
+          fontFamily="Space Mono, monospace"
+          fontSize="15"
+          letterSpacing="2"
+        >
           КОРРЕКЦИЯ
         </text>
       </g>
 
       {extensionPricingRows.map((row, index) => {
-        const y = rowStartY + index * rowGap;
+        const y = firstRowY + index * (rowHeight + rowGap);
 
         return (
-          <g key={row.length}>
+          <g key={row.length} transform={`translate(${headX} ${y})`}>
+            <rect width={labelColWidth} height={rowHeight} rx="24" fill="url(#lengthCellFill)" stroke="rgba(255,255,255,0.07)" />
+            <rect x={labelColWidth + cellGap} width={valueColWidth} height={rowHeight} rx="24" fill="url(#extensionCellFill)" stroke="rgba(255,255,255,0.08)" />
             <rect
-              x={innerLeft}
-              y={y}
-              width="1264"
-              height="84"
-              rx="28"
-              fill={index % 2 === 0 ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.04)'}
-              stroke="rgba(255,255,255,0.08)"
+              x={labelColWidth + valueColWidth + cellGap * 2}
+              width={valueColWidth}
+              height={rowHeight}
+              rx="24"
+              fill="url(#correctionCellFill)"
+              stroke="rgba(217,191,226,0.11)"
             />
-            <text
-              x={labelColCenter}
-              y={y + 52}
-              fill="#f2eef5"
-              fontFamily="Space Mono, monospace"
-              fontSize="28"
-              fontWeight="700"
-              textAnchor="middle"
-            >
+
+            <text x="24" y="60" fill="#f2eef5" fontFamily="Space Mono, monospace" fontSize="27" fontWeight="700">
               {row.length}
             </text>
             <text
-              x={extensionColCenter}
-              y={y + 52}
+              x={labelColWidth + cellGap + 24}
+              y="60"
               fill="#f2eef5"
               fontFamily="Space Mono, monospace"
-              fontSize="30"
+              fontSize="29"
               fontWeight="700"
-              textAnchor="middle"
             >
               {row.extensionPrice}
             </text>
             <text
-              x={correctionColCenter}
-              y={y + 52}
+              x={labelColWidth + valueColWidth + cellGap * 2 + 24}
+              y="60"
               fill="#f2eef5"
               fontFamily="Space Mono, monospace"
-              fontSize="30"
+              fontSize="29"
               fontWeight="700"
-              textAnchor="middle"
             >
               {row.correctionPrice}
             </text>
@@ -161,33 +382,25 @@ function TempPricelistArtwork({ svgRef }) {
         );
       })}
 
-      <line
-        x1={innerLeft}
-        x2={innerLeft + 1264}
-        y1={cardY + 694}
-        y2={cardY + 694}
-        stroke="rgba(255,255,255,0.08)"
-      />
-
       <text
-        x={innerLeft + 1264}
-        y={cardY + 748}
-        fill="rgba(242,238,245,0.82)"
+        x={artboard.width - 72}
+        y={artboard.height - 100}
+        fill="rgba(242,238,245,0.74)"
         fontFamily="Space Mono, monospace"
-        fontSize="20"
+        fontSize="14"
         textAnchor="end"
-        letterSpacing="1.8"
+        letterSpacing="0.6"
       >
-        t.me/dEDussikm
+        {telegramUrl}
       </text>
       <text
-        x={innerLeft + 1264}
-        y={cardY + 790}
-        fill="rgba(242,238,245,0.52)"
+        x={artboard.width - 72}
+        y={artboard.height - 62}
+        fill="rgba(242,238,245,0.4)"
         fontFamily="Space Mono, monospace"
-        fontSize="18"
+        fontSize="14"
         textAnchor="end"
-        letterSpacing="2.4"
+        letterSpacing="2"
       >
         КУШВА · ЛАК И ТОЧКА
       </text>
@@ -242,7 +455,7 @@ export default function TempPricelistExport() {
             const jpgUrl = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = jpgUrl;
-            link.download = 'pricelist.jpg';
+            link.download = 'pricelist-3x4.jpg';
             link.click();
             URL.revokeObjectURL(jpgUrl);
             setIsDownloading(false);
@@ -269,8 +482,8 @@ export default function TempPricelistExport() {
         <div className={styles.toolbar}>
           <div className={styles.meta}>
             <p className={styles.eyebrow}>Temporary Export</p>
-            <h1 className={styles.title}>Временная страница выгрузки прайса</h1>
-            <p className={styles.note}>Открой `/pricelist-export.html`, скачай JPG или просто сделай clean screenshot с холста.</p>
+            <h1 className={styles.title}>Временная страница выгрузки прайса 3:4</h1>
+            <p className={styles.note}>Полный прайс собран как адаптированный вертикальный постер: можно скачать JPG или сделать clean screenshot с холста.</p>
           </div>
 
           <div className={styles.actions}>
