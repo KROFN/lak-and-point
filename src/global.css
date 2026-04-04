@@ -22,7 +22,7 @@
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 999px;
-  --nav-height: 84px;
+  --nav-height: 104px;
 }
 
 *,
@@ -240,7 +240,7 @@ a {
 
 @media (max-width: 760px) {
   :root {
-    --nav-height: 74px;
+    --nav-height: 94px;
     --container: min(100vw - 24px, 1180px);
   }
 

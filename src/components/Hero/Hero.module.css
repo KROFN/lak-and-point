@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   min-height: calc(100svh - var(--nav-height));
-  padding: 40px 0 72px;
+  padding: calc(var(--nav-height) + 24px) 0 72px;
   display: flex;
   align-items: center;
   background:
@@ -77,7 +77,7 @@
 @media (max-width: 760px) {
   .hero {
     min-height: auto;
-    padding-top: 124px;
+    padding-top: calc(var(--nav-height) + 30px);
     padding-bottom: 56px;
   }
 
@@ -110,7 +110,7 @@
 
 @media (max-width: 420px) {
   .hero {
-    padding-top: 118px;
+    padding-top: calc(var(--nav-height) + 24px);
   }
 
   .title {
