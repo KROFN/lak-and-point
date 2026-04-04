@@ -4,12 +4,12 @@
   max-width: none;
   margin: 0;
   min-width: 0;
-  min-height: 216px;
+  min-height: 208px;
   display: flex;
   flex-direction: column;
   justify-self: stretch;
-  gap: 22px;
-  padding: 22px 22px 18px;
+  gap: 18px;
+  padding: 24px 24px 20px;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
   background:
@@ -64,17 +64,18 @@
 .label {
   margin: 0;
   font-family: 'Space Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  letter-spacing: 0.13em;
   color: var(--text-secondary);
   text-transform: uppercase;
 }
 
 .title {
   margin: auto 0 0;
-  max-width: 15ch;
-  font-size: clamp(1.28rem, 2.1vw, 1.82rem);
-  line-height: 1.08;
+  max-width: 14ch;
+  font-size: clamp(1.24rem, 2vw, 1.74rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
@@ -84,7 +85,7 @@
   justify-content: space-between;
   gap: 16px;
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -92,7 +93,7 @@
   margin: 0;
   color: var(--accent-main);
   font-family: 'Space Mono', monospace;
-  font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+  font-size: clamp(1.02rem, 1.5vw, 1.24rem);
   letter-spacing: 0.04em;
 }
 
@@ -105,7 +106,7 @@
 
 @media (max-width: 1100px) {
   .card {
-    min-height: 188px;
+    min-height: 184px;
   }
 }
 
@@ -116,13 +117,13 @@
     min-height: 168px;
     width: 100%;
     max-width: none;
-    gap: 18px;
-    padding: 16px 16px 14px;
+    gap: 16px;
+    padding: 18px 16px 16px;
   }
 
   .title {
     max-width: none;
-    font-size: 1.1rem;
+    font-size: 1.08rem;
     text-wrap: pretty;
   }
 

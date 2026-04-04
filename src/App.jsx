@@ -4,6 +4,7 @@ import About from './components/About/About';
 import Services from './components/Services/Services';
 import Gallery from './components/Gallery/Gallery';
 import Contact from './components/Contact/Contact';
+import TempPricelistExport from './components/TempPricelistExport/TempPricelistExport';
 
 const tickerItems = [
   'МАНИКЮР',
@@ -34,6 +35,13 @@ function Ticker() {
 }
 
 export default function App() {
+  if (
+    window.location.pathname === '/pricelist-export' ||
+    window.location.pathname === '/pricelist-export.html'
+  ) {
+    return <TempPricelistExport />;
+  }
+
   return (
     <div className="page-shell">
       <div className="page-shell__noise" aria-hidden="true" />

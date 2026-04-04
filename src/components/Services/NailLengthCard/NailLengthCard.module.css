@@ -6,12 +6,13 @@
   min-width: 0;
   grid-column: span 12;
   justify-self: stretch;
-  padding: clamp(24px, 4vw, 38px);
+  padding: clamp(26px, 4vw, 38px);
   border-radius: calc(var(--radius-xl) + 6px);
   background:
-    radial-gradient(circle at top right, rgba(232, 165, 152, 0.16), transparent 22%),
-    radial-gradient(circle at 70% 28%, rgba(200, 164, 212, 0.18), transparent 26%),
-    linear-gradient(180deg, #3d6456 0%, #2b4d42 100%);
+    radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.08), transparent 22%),
+    radial-gradient(circle at top right, rgba(232, 165, 152, 0.12), transparent 22%),
+    radial-gradient(circle at 78% 18%, rgba(200, 164, 212, 0.16), transparent 22%),
+    linear-gradient(135deg, #486f60 0%, #36594d 56%, #2b4d42 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow-soft);
   overflow: hidden;
@@ -19,10 +20,10 @@
 
 .texture {
   position: absolute;
-  right: -24px;
-  bottom: -30px;
-  width: 240px;
-  height: 240px;
+  right: -18px;
+  top: -24px;
+  width: 220px;
+  height: 220px;
   opacity: 0.08;
   border-radius: 42% 58% 52% 48% / 46% 42% 58% 54%;
   background:
@@ -32,142 +33,386 @@
   pointer-events: none;
 }
 
-.topbar {
+.marks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 250px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mark {
+  position: absolute;
+  color: rgba(242, 238, 245, 0.1);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(242, 238, 245, 0.04);
+}
+
+.markFarLeftTop {
+  top: 26px;
+  left: 18px;
+  color: rgba(242, 238, 245, 0.08);
+  font-size: 0.96rem;
+}
+
+.markLeftTop {
+  top: 34px;
+  left: 48px;
+  color: rgba(232, 165, 152, 0.12);
+  font-size: 1.1rem;
+}
+
+.markLeftMid {
+  top: 96px;
+  left: 182px;
+  color: rgba(242, 238, 245, 0.08);
+  font-size: 1rem;
+}
+
+.markCenterTop {
+  top: 54px;
+  left: 45%;
+  color: rgba(200, 164, 212, 0.12);
+  font-size: 1rem;
+}
+
+.markUpperCenter {
+  top: 24px;
+  left: 54%;
+  color: rgba(242, 238, 245, 0.08);
+  font-size: 0.92rem;
+}
+
+.markCenterRight {
+  top: 124px;
+  left: 58%;
+  color: rgba(232, 165, 152, 0.11);
+  font-size: 1.06rem;
+}
+
+.markTopRight {
+  top: 48px;
+  right: 54px;
+  font-size: 1.55rem;
+}
+
+.markNearBadge {
+  top: 84px;
+  right: 208px;
+  color: rgba(200, 164, 212, 0.11);
+  font-size: 0.92rem;
+}
+
+.markUpperRight {
+  top: 112px;
+  right: 126px;
+  color: rgba(200, 164, 212, 0.12);
+  font-size: 1.1rem;
+}
+
+.markMidLeft {
+  top: 186px;
+  left: 88px;
+  color: rgba(232, 165, 152, 0.11);
+  font-size: 1rem;
+}
+
+.markMidRight {
+  top: 178px;
+  right: 204px;
+  color: rgba(242, 238, 245, 0.09);
+  font-size: 0.98rem;
+}
+
+.markLowerCenter {
+  top: 208px;
+  left: 52%;
+  color: rgba(242, 238, 245, 0.08);
+  font-size: 0.92rem;
+}
+
+.markBottomLeft {
+  left: 34%;
+  top: 204px;
+  color: rgba(200, 164, 212, 0.11);
+  font-size: 1rem;
+}
+
+.markBottomRight {
+  right: 92px;
+  top: 214px;
+  color: rgba(232, 165, 152, 0.1);
+  font-size: 1.08rem;
+}
+
+.header {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.headline {
+  display: grid;
+  gap: 12px;
+  max-width: 620px;
 }
 
 .kicker {
   margin: 0;
-  color: rgba(242, 238, 245, 0.78);
+  color: rgba(242, 238, 245, 0.72);
   font-family: 'Space Mono', monospace;
-  font-size: 0.82rem;
-  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 380px);
-  gap: clamp(24px, 4vw, 44px);
-  align-items: start;
-  margin-top: 22px;
-}
-
-.intro {
-  display: grid;
-  gap: 18px;
 }
 
 .title {
   margin: 0;
-  max-width: 13ch;
-  font-size: clamp(2rem, 4vw, 3.3rem);
-  line-height: 0.98;
+  display: grid;
+  gap: 2px;
+  max-width: 11ch;
+  font-size: clamp(2rem, 3.1vw, 3.05rem);
+  line-height: 0.95;
   letter-spacing: -0.04em;
 }
 
-.description {
+.titleLine {
+  display: block;
+}
+
+.titleLineSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28em;
+  width: fit-content;
+}
+
+.titleConnector {
+  color: inherit;
+}
+
+.titleAccent {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  gap: 0.24em;
+  padding: 0.06em 0.28em 0.14em 0.22em;
+  color: #f9f3ff;
+  isolation: isolate;
+}
+
+.titleAccent::before {
+  content: '';
+  position: absolute;
+  inset: 0.18em -0.04em 0.02em -0.04em;
+  border-radius: 0.45em;
+  background: linear-gradient(90deg, rgba(232, 165, 152, 0.18), rgba(200, 164, 212, 0.34));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 24px rgba(76, 49, 86, 0.08);
+  z-index: -1;
+}
+
+.badge {
   margin: 0;
-  max-width: 54ch;
-  color: rgba(242, 238, 245, 0.86);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.diagram {
-  width: min(100%, 440px);
-  height: auto;
-  margin-top: 6px;
-}
-
-.diagramLabel {
-  fill: rgba(242, 238, 245, 0.76);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(242, 238, 245, 0.9);
   font-family: 'Space Mono', monospace;
-  font-size: 15px;
-  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.side {
-  align-self: start;
-  justify-self: end;
-  width: min(100%, 380px);
+.tableShell {
+  position: relative;
+  z-index: 1;
+  margin-top: 24px;
   padding: 18px;
-  border-radius: calc(var(--radius-lg) + 2px);
-  background: rgba(17, 28, 24, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(16, 30, 25, 0.2), rgba(255, 255, 255, 0.015)),
+    rgba(10, 20, 17, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.sideLabel {
-  margin: 0 0 14px;
-  color: rgba(242, 238, 245, 0.7);
+.tableShell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 30%);
+  pointer-events: none;
+}
+
+.tableShell::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  bottom: 18px;
+  width: min(32%, 320px);
+  border-radius: 24px;
+  background: linear-gradient(
+    90deg,
+    rgba(216, 192, 224, 0) 0%,
+    rgba(216, 192, 224, 0.02) 20%,
+    rgba(216, 192, 224, 0.06) 58%,
+    rgba(216, 192, 224, 0.02) 100%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.matrix {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 14px;
+}
+
+.matrixHead {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.82fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+}
+
+.headCell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(39, 64, 57, 0.72), rgba(31, 52, 46, 0.62));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(242, 238, 245, 0.66);
   font-family: 'Space Mono', monospace;
-  font-size: 0.76rem;
-  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
-.prices {
+.matrixHead .headCell:nth-child(2) {
+  background:
+    linear-gradient(180deg, rgba(48, 78, 69, 0.76), rgba(38, 63, 56, 0.68));
+  color: rgba(242, 238, 245, 0.72);
+}
+
+.headCellCorrection {
+  background:
+    linear-gradient(135deg, rgba(75, 103, 96, 0.82), rgba(64, 92, 86, 0.74) 62%, rgba(59, 86, 81, 0.68));
+  border-color: rgba(217, 191, 226, 0.11);
+  color: rgba(242, 238, 245, 0.82);
+}
+
+.rows {
   display: grid;
-  gap: 8px;
+  gap: 12px;
 }
 
 .row {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.82fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  min-width: 0;
+  border-radius: 24px;
+  background: transparent;
+  border: 0;
+  overflow: visible;
+}
+
+.lengthCell,
+.priceCell {
+  min-width: 0;
+  min-height: 82px;
+  padding: 20px 24px;
+  border-radius: 20px;
+}
+
+.lengthCell {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  min-width: 0;
-  padding: 14px 15px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(42, 68, 60, 0.8), rgba(34, 57, 50, 0.72)),
+    rgba(39, 64, 57, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  color: rgba(242, 238, 245, 0.94);
   font-family: 'Space Mono', monospace;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
-.row span {
-  color: rgba(242, 238, 245, 0.78);
-  min-width: 0;
+.priceCell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  background:
+    linear-gradient(180deg, rgba(46, 76, 67, 0.8), rgba(37, 63, 56, 0.72)),
+    rgba(41, 70, 62, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
-.row strong {
+.priceCellCorrection {
+  background:
+    linear-gradient(135deg, rgba(80, 110, 103, 0.84), rgba(69, 98, 92, 0.76) 60%, rgba(61, 90, 84, 0.72)),
+    linear-gradient(180deg, rgba(211, 186, 219, 0.04), rgba(200, 164, 212, 0.015));
+  border-color: rgba(217, 191, 226, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 8px 20px rgba(62, 35, 72, 0.03);
+}
+
+.mobileLabel {
+  display: none;
+  color: rgba(242, 238, 245, 0.7);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.priceCell strong {
   color: var(--text-primary);
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.note {
-  margin: 14px 0 0;
-  color: rgba(242, 238, 245, 0.74);
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1.08rem, 1.5vw, 1.32rem);
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 1100px) {
   .card {
-    padding: 22px;
+    padding: 24px 22px;
   }
 
-  .content {
-    grid-template-columns: 1fr;
-    align-items: start;
-    gap: 20px;
-  }
-
-  .side {
-    justify-self: stretch;
-    width: 100%;
-    max-width: none;
-  }
-
-  .diagram {
-    width: min(100%, 380px);
+  .title {
+    max-width: 12ch;
   }
 }
 
@@ -175,64 +420,175 @@
   .card {
     width: 100%;
     max-width: none;
-    padding: 18px 16px;
+    padding: 20px 16px 16px;
     border-radius: 28px;
   }
 
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
+  .header {
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px;
+    padding-bottom: 18px;
   }
 
   .title {
     max-width: none;
-    font-size: clamp(1.6rem, 7vw, 2.05rem);
+    font-size: clamp(1.75rem, 6.4vw, 2.2rem);
     text-wrap: pretty;
   }
 
-  .description {
-    max-width: none;
-    font-size: 0.96rem;
-    line-height: 1.55;
+  .titleLineSecondary {
+    gap: 0.22em;
   }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin-top: 18px;
+  .titleAccent {
+    padding-inline: 0.16em 0.2em;
   }
 
-  .diagram {
+  .badge {
+    min-height: 38px;
+    padding-inline: 15px;
+    font-size: 0.72rem;
+    white-space: normal;
+  }
+
+  .matrix {
+    gap: 12px;
+  }
+
+  .tableShell::after {
     display: none;
   }
 
-  .diagramLabel {
-    font-size: 10px;
-  }
-
-  .side {
-    padding: 14px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 100%;
-    justify-self: stretch;
+  .matrixHead {
+    display: none;
   }
 
   .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
-    padding: 12px;
+    padding: 10px;
+    border-radius: 22px;
+    overflow: visible;
   }
 
-  .row span,
-  .row strong {
+  .lengthCell {
+    grid-column: 1 / -1;
+    min-height: 56px;
+    padding: 14px 16px;
+    font-size: 0.96rem;
+    border-radius: 16px;
+    background:
+      linear-gradient(180deg, rgba(42, 68, 60, 0.76), rgba(34, 57, 50, 0.66));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .priceCell {
+    min-height: 82px;
+    padding: 12px;
+    gap: 6px;
+    border-radius: 16px;
+    background:
+      linear-gradient(180deg, rgba(46, 76, 67, 0.72), rgba(37, 63, 56, 0.6));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .mobileLabel {
+    display: block;
+  }
+
+  .priceCellCorrection {
+    background:
+      linear-gradient(135deg, rgba(80, 110, 103, 0.74), rgba(69, 98, 92, 0.64) 60%, rgba(61, 90, 84, 0.58)),
+      linear-gradient(180deg, rgba(211, 186, 219, 0.03), rgba(200, 164, 212, 0.012));
+    border-color: rgba(217, 191, 226, 0.1);
+  }
+
+  .priceCell strong {
+    font-size: 1rem;
+  }
+
+  .markTopRight {
+    top: 46px;
+    right: 32px;
+    font-size: 1.3rem;
+  }
+
+  .markUpperRight {
+    top: 104px;
+    right: 72px;
+    font-size: 0.96rem;
+  }
+
+  .markLeftTop {
+    top: 28px;
+    left: 24px;
+    font-size: 0.96rem;
+  }
+
+  .markFarLeftTop {
+    top: 22px;
+    left: 10px;
+    font-size: 0.8rem;
+  }
+
+  .markLeftMid {
+    top: 86px;
+    left: 118px;
+    font-size: 0.88rem;
+  }
+
+  .markCenterTop {
+    top: 48px;
+    left: 44%;
+    font-size: 0.84rem;
+  }
+
+  .markUpperCenter {
+    top: 26px;
+    left: 56%;
+    font-size: 0.76rem;
+  }
+
+  .markCenterRight {
+    top: 112px;
+    left: 60%;
+    font-size: 0.88rem;
+  }
+
+  .markNearBadge {
+    top: 74px;
+    right: 122px;
+    font-size: 0.74rem;
+  }
+
+  .markMidLeft {
+    top: 164px;
+    left: 42px;
+    font-size: 0.8rem;
+  }
+
+  .markMidRight {
+    top: 158px;
+    right: 124px;
+    font-size: 0.84rem;
+  }
+
+  .markBottomLeft {
+    left: 38%;
+    top: 184px;
     font-size: 0.82rem;
   }
 
-  .note {
-    font-size: 0.84rem;
-    line-height: 1.5;
+  .markLowerCenter {
+    top: 182px;
+    left: 56%;
+    font-size: 0.74rem;
+  }
+
+  .markBottomRight {
+    right: 34px;
+    top: 188px;
+    font-size: 0.88rem;
   }
 }
 
@@ -241,9 +597,28 @@
     font-size: 1.42rem;
   }
 
+  .titleLineSecondary {
+    gap: 0.16em;
+  }
+
   .kicker,
-  .sideLabel {
+  .mobileLabel {
     font-size: 0.7rem;
     letter-spacing: 0.12em;
+  }
+
+  .badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .markLeftMid,
+  .markUpperCenter,
+  .markCenterRight,
+  .markNearBadge,
+  .markMidLeft,
+  .markLowerCenter,
+  .markBottomLeft {
+    display: none;
   }
 }

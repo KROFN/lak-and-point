@@ -41,7 +41,7 @@ export default function Services() {
           Прайс
         </h2>
         <p className="section__lead" data-animate>
-          Дизайн — в подарок к любой услуге 💖
+          Дизайн — в подарок 💖
         </p>
       </div>
 
