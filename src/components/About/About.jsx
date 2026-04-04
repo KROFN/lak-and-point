@@ -38,7 +38,9 @@ export default function About() {
             ABOUT
           </div>
           <h2 className="section__title" data-animate>
-            Привет, я Маша
+            Привет,
+            <br />
+            я Маша
           </h2>
           <p className="section__lead" data-animate>
             Делаю ногти у себя дома — без пафоса, зато с душой и нормальным результатом.

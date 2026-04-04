@@ -84,7 +84,6 @@ export default function NailLengthCard() {
 
       <div className={styles.topbar}>
         <p className={styles.kicker}>Наращивание</p>
-        <p className={styles.bonus}>💖 Дизайн в подарок</p>
       </div>
 
       <div className={styles.content}>
