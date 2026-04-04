@@ -1,0 +1,124 @@
+.hero {
+  position: relative;
+  min-height: calc(100svh - var(--nav-height));
+  padding: 40px 0 72px;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(232, 165, 152, 0.1), transparent 22%),
+    radial-gradient(circle at 72% 24%, rgba(200, 164, 212, 0.12), transparent 26%),
+    linear-gradient(135deg, #17111e 0%, #0e0b12 42%, #111019 100%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03), transparent 26%),
+    radial-gradient(circle at 50% 50%, rgba(155, 111, 168, 0.08), transparent 44%);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  width: var(--container);
+  margin: 0 auto;
+  display: block;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  max-width: min(100%, 980px);
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.04em;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.5rem, 10vw, 8.8rem);
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+}
+
+.line {
+  display: block;
+  text-wrap: balance;
+  text-shadow: 0 0 34px rgba(155, 111, 168, 0.12);
+}
+
+.lineAccent {
+  color: var(--accent-main);
+}
+
+.lineOutline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(242, 238, 245, 0.6);
+}
+
+.subtitle {
+  margin: 28px 0 0;
+  max-width: 520px;
+  color: var(--text-secondary);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: auto;
+    padding-top: 124px;
+    padding-bottom: 56px;
+  }
+
+  .copy {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: clamp(2.15rem, 11vw, 3.55rem);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+  }
+
+  .lineOutline {
+    -webkit-text-stroke: 0.8px rgba(242, 238, 245, 0.55);
+  }
+
+  .subtitle {
+    margin-top: 22px;
+    max-width: 32ch;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .actions {
+    margin-top: 26px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    padding-top: 118px;
+  }
+
+  .title {
+    font-size: clamp(2rem, 10.5vw, 3rem);
+  }
+
+  .subtitle {
+    max-width: 100%;
+    font-size: 0.96rem;
+  }
+}

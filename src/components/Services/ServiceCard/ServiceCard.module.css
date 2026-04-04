@@ -1,0 +1,140 @@
+.card {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  min-width: 0;
+  min-height: 216px;
+  display: flex;
+  flex-direction: column;
+  justify-self: stretch;
+  gap: 22px;
+  padding: 22px 22px 18px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    var(--bg-card);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.card--accent {
+  background:
+    radial-gradient(circle at top right, rgba(200, 164, 212, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+    var(--bg-card);
+}
+
+.card--soft {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(232, 165, 152, 0.18), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+    var(--bg-card);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 164, 212, 0.34);
+  box-shadow:
+    var(--shadow-soft),
+    0 0 36px rgba(155, 111, 168, 0.12);
+}
+
+.glow {
+  position: absolute;
+  inset: auto -10% -30% auto;
+  width: 180px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(155, 111, 168, 0.18), transparent 68%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.card:hover .glow {
+  opacity: 1;
+}
+
+.label {
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.title {
+  margin: auto 0 0;
+  max-width: 15ch;
+  font-size: clamp(1.28rem, 2.1vw, 1.82rem);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.price {
+  margin: 0;
+  color: var(--accent-main);
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+  letter-spacing: 0.04em;
+}
+
+.index {
+  color: rgba(242, 238, 245, 0.26);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+}
+
+@media (max-width: 1100px) {
+  .card {
+    min-height: 188px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    display: flex;
+    align-self: stretch;
+    min-height: 168px;
+    width: 100%;
+    max-width: none;
+    gap: 18px;
+    padding: 16px 16px 14px;
+  }
+
+  .title {
+    max-width: none;
+    font-size: 1.1rem;
+    text-wrap: pretty;
+  }
+
+  .footer {
+    padding-top: 14px;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .index {
+    font-size: 0.74rem;
+  }
+}

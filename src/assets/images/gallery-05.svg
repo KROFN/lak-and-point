@@ -1,0 +1,14 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1500" fill="#110D13"/>
+  <rect x="76" y="72" width="1048" height="1356" rx="56" fill="url(#paint0_linear_2_6)"/>
+  <circle cx="328" cy="362" r="228" fill="#9B6FA8" fill-opacity="0.24"/>
+  <circle cx="842" cy="1068" r="240" fill="#2D4A3E" fill-opacity="0.34"/>
+  <path d="M322 814C322 679 435 578 587 578C741 578 860 683 860 814C860 960 730 1068 565 1068C409 1068 322 956 322 814Z" fill="#E8A598" fill-opacity="0.16"/>
+  <text x="124" y="1246" fill="#F2EEF5" font-family="'Space Mono', monospace" font-size="72" letter-spacing="10">PLACEHOLDER 05</text>
+  <defs>
+    <linearGradient id="paint0_linear_2_6" x1="164" y1="72" x2="1084" y2="1428" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#241C28"/>
+      <stop offset="1" stop-color="#0D0B0F"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,14 @@
+<svg width="1200" height="1300" viewBox="0 0 1200 1300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1300" fill="#130F16"/>
+  <rect x="72" y="72" width="1056" height="1156" rx="56" fill="url(#paint0_linear_2_2)"/>
+  <ellipse cx="834" cy="340" rx="240" ry="214" fill="#9B6FA8" fill-opacity="0.24"/>
+  <ellipse cx="292" cy="936" rx="212" ry="184" fill="#2D4A3E" fill-opacity="0.34"/>
+  <path d="M380 514C380 394 490 290 644 290C798 290 918 402 918 530C918 690 778 826 592 826C438 826 380 654 380 514Z" fill="#E8A598" fill-opacity="0.16"/>
+  <text x="128" y="1086" fill="#F2EEF5" font-family="'Space Mono', monospace" font-size="68" letter-spacing="10">PLACEHOLDER 03</text>
+  <defs>
+    <linearGradient id="paint0_linear_2_2" x1="116" y1="108" x2="1064" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#251E2D"/>
+      <stop offset="1" stop-color="#0D0B0F"/>
+    </linearGradient>
+  </defs>
+</svg>
