@@ -170,8 +170,8 @@ function TempPricelistArtwork({ svgRef }) {
           <stop offset="1" stopColor="#c8a4d4" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="pageGlowBottom" cx="50%" cy="100%" r="48%">
-          <stop offset="0%" stopColor="#35594d" stopOpacity="0.28" />
-          <stop offset="1" stopColor="#35594d" stopOpacity="0" />
+          <stop offset="0%" stopColor="#9b6fa8" stopOpacity="0.18" />
+          <stop offset="1" stopColor="#9b6fa8" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="serviceAccentGlow" cx="100%" cy="0%" r="100%">
           <stop offset="0%" stopColor="#c8a4d4" stopOpacity="0.22" />
@@ -186,9 +186,9 @@ function TempPricelistArtwork({ svgRef }) {
           <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="greenCardFill" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#486f60" />
-          <stop offset="58%" stopColor="#36594d" />
-          <stop offset="100%" stopColor="#2b4d42" />
+          <stop offset="0%" stopColor="#43344d" />
+          <stop offset="58%" stopColor="#33273c" />
+          <stop offset="100%" stopColor="#271d2f" />
         </linearGradient>
         <linearGradient id="chipFill" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
@@ -199,32 +199,32 @@ function TempPricelistArtwork({ svgRef }) {
           <stop offset="100%" stopColor="rgba(200,164,212,0.34)" />
         </linearGradient>
         <linearGradient id="tableShellFill" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(16,30,25,0.18)" />
+          <stop offset="0%" stopColor="rgba(29,21,36,0.22)" />
           <stop offset="100%" stopColor="rgba(255,255,255,0.015)" />
         </linearGradient>
         <linearGradient id="headLengthFill" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(39,64,57,0.7)" />
-          <stop offset="100%" stopColor="rgba(31,52,46,0.62)" />
+          <stop offset="0%" stopColor="rgba(57,44,68,0.72)" />
+          <stop offset="100%" stopColor="rgba(44,34,53,0.64)" />
         </linearGradient>
         <linearGradient id="headExtensionFill" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(48,78,69,0.74)" />
-          <stop offset="100%" stopColor="rgba(38,63,56,0.68)" />
+          <stop offset="0%" stopColor="rgba(68,52,82,0.76)" />
+          <stop offset="100%" stopColor="rgba(54,41,66,0.7)" />
         </linearGradient>
         <linearGradient id="headCorrectionFill" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="rgba(75,103,96,0.78)" />
-          <stop offset="100%" stopColor="rgba(59,86,81,0.68)" />
+          <stop offset="0%" stopColor="rgba(91,71,107,0.8)" />
+          <stop offset="100%" stopColor="rgba(73,57,88,0.72)" />
         </linearGradient>
         <linearGradient id="lengthCellFill" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(42,68,60,0.78)" />
-          <stop offset="100%" stopColor="rgba(34,57,50,0.72)" />
+          <stop offset="0%" stopColor="rgba(55,42,67,0.8)" />
+          <stop offset="100%" stopColor="rgba(44,34,54,0.74)" />
         </linearGradient>
         <linearGradient id="extensionCellFill" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(46,76,67,0.78)" />
-          <stop offset="100%" stopColor="rgba(37,63,56,0.72)" />
+          <stop offset="0%" stopColor="rgba(66,50,80,0.8)" />
+          <stop offset="100%" stopColor="rgba(52,40,64,0.74)" />
         </linearGradient>
         <linearGradient id="correctionCellFill" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="rgba(80,110,103,0.8)" />
-          <stop offset="100%" stopColor="rgba(61,90,84,0.72)" />
+          <stop offset="0%" stopColor="rgba(88,69,104,0.82)" />
+          <stop offset="100%" stopColor="rgba(69,54,84,0.74)" />
         </linearGradient>
       </defs>
 

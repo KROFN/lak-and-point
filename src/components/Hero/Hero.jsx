@@ -83,7 +83,7 @@ export default function Hero() {
               target="_blank"
               rel="noreferrer"
             >
-              https://t.me/the6_7lakandtochka0 ↗
+              Написать в Telegram ↗
             </a>
           </div>
 
