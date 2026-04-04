@@ -86,6 +86,10 @@ export default function Hero() {
               Написать в Telegram ↗
             </a>
           </div>
+
+          <a className={styles.scrollHint} href="#services" data-hero-copy>
+            ↓ Листай ниже
+          </a>
         </div>
       </div>
     </section>

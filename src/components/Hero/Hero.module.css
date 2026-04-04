@@ -74,6 +74,24 @@
   margin-top: 34px;
 }
 
+.scrollHint {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  color: rgba(242, 238, 245, 0.62);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.scrollHint:hover,
+.scrollHint:focus-visible {
+  color: var(--accent-main);
+  transform: translateX(2px);
+}
+
 @media (max-width: 760px) {
   .hero {
     min-height: auto;
@@ -105,6 +123,12 @@
   .actions {
     margin-top: 26px;
     gap: 12px;
+  }
+
+  .scrollHint {
+    margin-top: 16px;
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
   }
 }
 
